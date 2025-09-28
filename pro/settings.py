@@ -107,6 +107,9 @@
 from pathlib import Path
 import os
 
+# -------------------------------
+# Base directory
+# -------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # -------------------------------
@@ -114,7 +117,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # -------------------------------
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your_default_secret')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['*']  # For small project deployment
+ALLOWED_HOSTS = ['django-fsd.onrender.com', 'localhost']
 
 # -------------------------------
 # Installed Apps
@@ -169,19 +172,26 @@ TEMPLATES = [
 ]
 
 # -------------------------------
-# Database (MySQL)
+# Database (PostgreSQL)
 # -------------------------------
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DB_NAME', 'e_commerce'),
-        'USER': os.environ.get('MYSQL_DB_USER', 'root'),
-        'PASSWORD': os.environ.get('MYSQL_DB_PASSWORD', 'Lavanya$21'),
-        'HOST': os.environ.get('MYSQL_DB_HOST', 'localhost'),
-        'PORT': os.environ.get('MYSQL_DB_PORT', '3306'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'django_fsd_db'),
+        'USER': os.environ.get('POSTGRES_USER', 'django_fsd_db_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'KhszaBOsjYHNyQVxbVAlPzdV64lpPTaH'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'dpg-d3ckier7mgec73ajjkhg-a.oregon-postgres.render.com'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': 'require',  # <-- Enforces SSL for Render
+        },
     }
 }
 
+# -------------------------------
+# Custom user model
+# -------------------------------
 AUTH_USER_MODEL = 'website.AuthUser'
 
 # -------------------------------
@@ -206,7 +216,7 @@ USE_TZ = True
 # Static files
 # -------------------------------
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # Required for Render
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # -------------------------------
 # Default primary key
@@ -217,7 +227,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS (for React frontend)
 # -------------------------------
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "http://localhost:5173",  # Update with your frontend URL if deployed
 ]
 CORS_ALLOW_CREDENTIALS = True
 

@@ -102,7 +102,7 @@ def log(request):
         else:
             return render(request, 'website/login.html', {'error': 'Invalid username or password'})
     
-    return render(request, 'website/login.html')
+    return render(request, 'website/login.html')  
 
 
 # ----- REST login API -----
