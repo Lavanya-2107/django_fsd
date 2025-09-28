@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}E-Commerce{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include "website/common/header.html" %}
+
+    <main class="container my-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "website/common/footer.html" %}
+    {% include "website/common/scripting.html" %}
+</body>
+</html>

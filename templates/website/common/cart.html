@@ -1,0 +1,31 @@
+{% extends "website/common/base.html" %}
+
+{% block title %}My Cart{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center mb-4">Your Cart</h2>
+
+    {% if cart_items %}
+    <div class="row">
+        {% for item in cart_items %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text text-muted">{{ item.description|truncatechars:80 }}</p>
+                    <p class="fw-bold">₹{{ item.price }}</p>
+                    <form action="{% url 'remove-from-cart' item.id %}" method="post" class="mt-auto">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger w-100">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center">Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
