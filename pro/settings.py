@@ -178,16 +178,17 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'django_fsd_db'),
-        'USER': os.environ.get('POSTGRES_USER', 'django_fsd_db_user'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'KhszaBOsjYHNyQVxbVAlPzdV64lpPTaH'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'dpg-d3ckier7mgec73ajjkhg-a.oregon-postgres.render.com'),
+        'NAME': os.environ.get('POSTGRES_DB', 'django_fsd_db_g7xq'),
+        'USER': os.environ.get('POSTGRES_USER', 'django_fsd_db_g7xq_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'srr6p5meZpjdlXI0Gr0rBxSwsxav5XmF'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'dpg-d3d3agggjchc739lur50-a.oregon-postgres.render.com'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
         'OPTIONS': {
-            'sslmode': 'require',  # <-- Enforces SSL for Render
+            'sslmode': 'require',  # Enforces SSL for Render
         },
     }
 }
+
 
 # -------------------------------
 # Custom user model
