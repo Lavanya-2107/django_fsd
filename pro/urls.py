@@ -4,17 +4,15 @@ from website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('website.urls')),  # API endpoints
 
-    # API endpoints
-    path('api/', include('website.urls')),
-
-    # Default → login page
+    # Default login page
     path('', views.log, name='login'),
 
     # Home page after login
     path('home/', views.index, name='home'),
 
-    # Product + Cart
+    # Product + Cart pages
     path('products/page/', views.product_page, name='product-page'),
     path('products/add-to-cart/<int:pk>/', views.add_to_cart, name='add-to-cart'),
     path('cart/', views.view_cart, name='view-cart'),
